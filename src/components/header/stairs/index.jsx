@@ -9,7 +9,7 @@ export default function Stairs() {
             {[...Array(5)].map((_, index) => {
                 return (
                     <motion.div
-                        key={index}  // Added key prop
+                        key={index}  
                         variants={height}
                         {...mountAnim}
                         custom={4 - index}

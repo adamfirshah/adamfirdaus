@@ -6,18 +6,18 @@ import { useState } from 'react';
 
 const menu = [
   {
-    title: "Projects",
-    description: "To See Everything",
-    images: ['projects1.jpg', 'projects2.jpg']
+    title: "About Me",
+    description: "To Know Everything",
+    images: ['aboutme1.jpg', 'aboutme2.jpeg']
   },
   {
-    title: "Agence",
-    description: "To Learn Everything",
-    images: ['agence1.jpg', 'agence2.jpg']
+    title: "Projects",
+    description: "To See Everything",
+    images: ['projects1 (2).jpg', 'projects2.jpg']
   },
   {
     title: "Contact",
-    description: "To Send a FAX",
+    description: "CONNECT WITH ME",
     images: ['contact1.jpg', 'contact2.jpg']
   }
 ]
