@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import styles from './style.module.scss'
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { slideUp } from './animation';
@@ -14,6 +14,18 @@ export default function Home() {
   const slider = useRef(null);
   const xPercent = useRef(0); // Store xPercent in a ref
   const direction = useRef(-1); // Use useRef for the direction variable
+
+  const animate = useCallback(() => {
+    if (xPercent.current < -100) {
+      xPercent.current = 0;
+    } else if (xPercent.current > 0) {
+      xPercent.current = -100;
+    }
+    gsap.set(firstText.current, { xPercent: xPercent.current });
+    gsap.set(secondText.current, { xPercent: xPercent.current });
+    requestAnimationFrame(animate);
+    xPercent.current += 0.1 * direction.current; // Update the xPercent using the ref value
+  }, []); // No dependencies, as xPercent and direction are refs and don't need to be included
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -30,19 +42,7 @@ export default function Home() {
       x: "-500px",
     });
     requestAnimationFrame(animate);
-  }, []);
-
-  const animate = () => {
-    if (xPercent.current < -100) {
-      xPercent.current = 0;
-    } else if (xPercent.current > 0) {
-      xPercent.current = -100;
-    }
-    gsap.set(firstText.current, { xPercent: xPercent.current });
-    gsap.set(secondText.current, { xPercent: xPercent.current });
-    requestAnimationFrame(animate);
-    xPercent.current += 0.1 * direction.current; // Update the xPercent using the ref value
-  };
+  }, [animate]); // Added animate to the dependency array
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
@@ -65,5 +65,5 @@ export default function Home() {
         <p>Designer & Developer</p>
       </div>
     </motion.main>
-  )
+  );
 }

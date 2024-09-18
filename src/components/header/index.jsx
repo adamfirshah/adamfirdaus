@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../../common/RoundedButton';
 import Magnetic from '../../common/Magnetic';
 
-export default function Header() { // Renamed component to Header
+export default function Header() {
     const header = useRef(null);
     const [isActive, setIsActive] = useState(false);
     const pathname = usePathname();
@@ -17,7 +17,7 @@ export default function Header() { // Renamed component to Header
 
     useEffect(() => {
       if (isActive) setIsActive(false);
-    }, [pathname]);
+    }, [pathname, isActive]); // Added isActive to the dependencies array
 
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
