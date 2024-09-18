@@ -13,8 +13,9 @@
     "gsap": "^3.12.5",
     "install": "^0.13.0",
     "locomotive-scroll": "^5.0.0-beta.21",
-    "next": "14.2.5",
+    "next": "^14.2.12",
     "npm": "^10.8.3",
+    "punycode": "^2.3.1",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.77.8"
