@@ -3,14 +3,15 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { slide, scale } from '../../animation';
 
-export default function Link({data, isActive, setSelectedIndicator}) {
+// Renamed custom component to NavLink
+export default function NavLink({data, isActive, setSelectedIndicator}) {
   
-    const { title, href, index} = data;
+    const { title, href, index } = data;
   
     return (
       <motion.div 
         className={styles.link} 
-        onMouseEnter={() => {setSelectedIndicator(href)}} 
+        onMouseEnter={() => { setSelectedIndicator(href) }} 
         custom={index} 
         variants={slide} 
         initial="initial" 
