@@ -26,7 +26,7 @@ const navItems = [
   },
 ];
 
-export default function Header() {  // Renamed from index to NavMenu
+export default function NavMenu() {  // Renamed from index to NavMenu
 
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
